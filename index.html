@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BASNET TV - Live Streaming</title>
+    <title>Amar TV - Live Streaming</title>
     <style>
         /* --- CSS Styling --- */
         :root {
@@ -26,6 +26,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             height: 100vh;
+            height: 100dvh; /* মোবাইলের ব্রাউজার মেনুবারের জন্য ফিক্স */
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -37,6 +38,7 @@
             padding: 10px;
             text-align: center;
             border-bottom: 1px solid #334155;
+            flex-shrink: 0; /* হেডার যাতে ছোট না হয়ে যায় */
         }
         
         marquee {
@@ -84,6 +86,7 @@
             display: flex;
             flex-direction: column;
             border-left: 1px solid #334155;
+            min-height: 0; /* স্ক্রলিং সমস্যার মূল ফিক্স */
         }
 
         .tabs {
@@ -94,6 +97,7 @@
             background-color: rgba(15, 23, 42, 0.5);
             scrollbar-width: thin;
             scrollbar-color: var(--primary-color) transparent;
+            flex-shrink: 0; 
         }
         
         .tabs::-webkit-scrollbar { height: 6px; }
@@ -117,12 +121,13 @@
         .channel-list {
             flex: 1;
             padding: 15px;
+            padding-bottom: 30px; 
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch; /* মোবাইলে স্মুথ স্ক্রলিং এর জন্য */
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap: 15px;
             align-content: start;
-            scrollbar-width: thin;
         }
 
         .channel-list::-webkit-scrollbar { width: 6px; }
@@ -173,7 +178,8 @@
 
         @media (max-width: 992px) {
             .main-container { flex-direction: column; }
-            .player-section { flex: none; padding: 10px; }
+            .player-section { flex: none; padding: 0; }
+            .video-wrapper { border-radius: 0; }
             .sidebar { border-left: none; border-top: 1px solid #334155; }
         }
     </style>
@@ -181,7 +187,7 @@
 <body>
 
     <header>
-        <marquee>Welcome to SOBUJ TV | Enjoy Buffer-Free Live TV Streaming</marquee>
+        <marquee>আমার টিভিতে স্বাগতম | বাফারিং ছাড়া উপভোগ করুন লাইভ টিভি | 👨‍💻 ডেভেলপমেন্ট ও ডিজাইনে সবুজ মিয়া শুভ </marquee>
     </header>
 
     <div class="main-container">
