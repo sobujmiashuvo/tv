@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amar TV - Live Streaming</title>
+    <title>SOBUJ LIVE TV</title>
     <style>
         /* --- CSS Styling --- */
         :root {
@@ -26,25 +26,10 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             height: 100vh;
-            height: 100dvh; /* মোবাইলের ব্রাউজার মেনুবারের জন্য ফিক্স */
+            height: 100dvh;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-        }
-
-        header {
-            background-color: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid #334155;
-            flex-shrink: 0; /* হেডার যাতে ছোট না হয়ে যায় */
-        }
-        
-        marquee {
-            font-size: 16px;
-            font-weight: bold;
-            color: #cbd5e1;
         }
 
         .main-container {
@@ -86,7 +71,7 @@
             display: flex;
             flex-direction: column;
             border-left: 1px solid #334155;
-            min-height: 0; /* স্ক্রলিং সমস্যার মূল ফিক্স */
+            min-height: 0;
         }
 
         .tabs {
@@ -118,12 +103,36 @@
         .tab-btn:hover { background-color: var(--hover-color); }
         .tab-btn.active { background-color: var(--primary-color); box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
 
+        /* Search Box Styles */
+        .search-container {
+            padding: 10px 15px;
+            background-color: var(--panel-bg);
+            border-bottom: 1px solid #334155;
+            flex-shrink: 0;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 1px solid #475569;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 14px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .search-container input:focus {
+            border-color: var(--primary-color);
+        }
+
         .channel-list {
             flex: 1;
             padding: 15px;
             padding-bottom: 30px; 
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch; /* মোবাইলে স্মুথ স্ক্রলিং এর জন্য */
+            -webkit-overflow-scrolling: touch;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             gap: 15px;
@@ -176,6 +185,23 @@
             width: 100%;
         }
 
+        /* Footer Styles */
+        footer {
+            background-color: var(--panel-bg);
+            color: #cbd5e1;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            border-top: 1px solid #334155;
+            flex-shrink: 0;
+            letter-spacing: 0.5px;
+        }
+
+        footer span {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
         @media (max-width: 992px) {
             .main-container { flex-direction: column; }
             .player-section { flex: none; padding: 0; }
@@ -186,12 +212,7 @@
 </head>
 <body>
 
-    <header>
-        <marquee>আমার টিভিতে স্বাগতম | বাফারিং ছাড়া উপভোগ করুন লাইভ টিভি | 👨‍💻 ডেভেলপমেন্ট ও ডিজাইনে সবুজ মিয়া শুভ </marquee>
-    </header>
-
     <div class="main-container">
-        
         <main class="player-section">
             <div class="video-wrapper">
                 <iframe id="tv-player" src="http://10.99.99.99/player.php?stream=80" allowfullscreen controls autoplay muted></iframe>
@@ -210,129 +231,155 @@
                 <button class="tab-btn" data-filter="Islamic">Islamic</button>
             </div>
 
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="চ্যানেলের নাম দিয়ে খুঁজুন...">
+            </div>
+
             <div class="channel-list" id="channel-container">
                 
-                <div class="channel-card playing" data-category="Bangla" data-stream="80">
-                    <img src="http://10.99.99.99/assets/images/ATN BANGLA1745044183.png" alt="ATN Bangla" onerror="this.src='https://via.placeholder.com/80x50?text=ATN+Bangla'">
-                    <span>ATN Bangla</span>
-                </div>
-                <div class="channel-card" data-category="Bangla" data-stream="79">
-                    <img src="http://10.99.99.99/assets/images/SOMOY TV1745044149.png" alt="Somoy TV" onerror="this.src='https://via.placeholder.com/80x50?text=Somoy+TV'">
-                    <span>Somoy TV</span>
-                </div>
-                <div class="channel-card" data-category="Bangla" data-stream="76">
-                    <img src="http://10.99.99.99/assets/images/JAMUNA TV1745044052.png" alt="Jamuna TV" onerror="this.src='https://via.placeholder.com/80x50?text=Jamuna+TV'">
-                    <span>Jamuna TV</span>
-                </div>
-                <div class="channel-card" data-category="Bangla" data-stream="82">
-                    <img src="http://10.99.99.99/assets/images/CHANNEL 241745044263.png" alt="Channel 24" onerror="this.src='https://via.placeholder.com/80x50?text=Channel+24'">
-                    <span>Channel 24</span>
-                </div>
-                <div class="channel-card" data-category="Bangla" data-stream="18">
-                    <img src="http://10.99.99.99/assets/images/STAR JALSHA HD1745033819.png" alt="Star Jalsha" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Jalsha'">
-                    <span>Star Jalsha HD</span>
-                </div>
-                <div class="channel-card" data-category="Bangla" data-stream="14">
-                    <img src="http://10.99.99.99/assets/images/ZEE BANGLA HD1745033633.png" alt="Zee Bangla" onerror="this.src='https://via.placeholder.com/80x50?text=Zee+Bangla'">
-                    <span>Zee Bangla HD</span>
-                </div>
+                <div class="channel-card playing" data-category="Bangla" data-stream="80"><img src="http://10.99.99.99/assets/images/ATN BANGLA1745044183.png" alt="ATN Bangla" onerror="this.src='https://via.placeholder.com/80x50?text=ATN+Bangla'"><span>ATN Bangla</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="95"><img src="http://10.99.99.99/assets/images/ATN NEWS1745045113.png" alt="ATN News" onerror="this.src='https://via.placeholder.com/80x50?text=ATN+News'"><span>ATN News</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="82"><img src="http://10.99.99.99/assets/images/CHANNEL 241745044263.png" alt="Channel 24" onerror="this.src='https://via.placeholder.com/80x50?text=Channel+24'"><span>Channel 24</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="81"><img src="http://10.99.99.99/assets/images/CHANNEL I1745044237.png" alt="Channel I" onerror="this.src='https://via.placeholder.com/80x50?text=Channel+I'"><span>Channel I</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="47"><img src="http://10.99.99.99/assets/images/COLORS BANGLA CINEMA1745041486.png" alt="Colors Bangla Cinema" onerror="this.src='https://via.placeholder.com/80x50?text=Colors+Cin'"><span>Colors Cinema</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="12"><img src="http://10.99.99.99/assets/images/COLORS BANGLA HD1745033576.png" alt="Colors Bangla HD" onerror="this.src='https://via.placeholder.com/80x50?text=Colors+Bangla'"><span>Colors Bangla</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="84"><img src="http://10.99.99.99/assets/images/ENTERR 101745044330.png" alt="Enterr 10" onerror="this.src='https://via.placeholder.com/80x50?text=Enterr+10'"><span>Enterr 10</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="56"><img src="http://10.99.99.99/assets/images/GTV1745042853.png" alt="GTV" onerror="this.src='https://via.placeholder.com/80x50?text=GTV'"><span>GTV</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="77"><img src="http://10.99.99.99/assets/images/INDEPENDENT TV1745044077.png" alt="Independent TV" onerror="this.src='https://via.placeholder.com/80x50?text=Independent'"><span>Independent TV</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="19"><img src="http://10.99.99.99/assets/images/JALSHA MOVIES HD1745034005.png" alt="Jalsha Movies HD" onerror="this.src='https://via.placeholder.com/80x50?text=Jalsha+Movies'"><span>Jalsha Movies</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="76"><img src="http://10.99.99.99/assets/images/JAMUNA TV1745044052.png" alt="Jamuna TV" onerror="this.src='https://via.placeholder.com/80x50?text=Jamuna+TV'"><span>Jamuna TV</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="78"><img src="http://10.99.99.99/assets/images/MAASRANGA HD1745044117.png" alt="Maasranga HD" onerror="this.src='https://via.placeholder.com/80x50?text=Maasranga'"><span>Maasranga HD</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="54"><img src="http://10.99.99.99/assets/images/NAGORIK1745042776.png" alt="Nagorik" onerror="this.src='https://via.placeholder.com/80x50?text=Nagorik'"><span>Nagorik</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="79"><img src="http://10.99.99.99/assets/images/SOMOY TV1745044149.png" alt="Somoy TV" onerror="this.src='https://via.placeholder.com/80x50?text=Somoy+TV'"><span>Somoy TV</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="44"><img src="http://10.99.99.99/assets/images/SONY AAT1745041124.png" alt="Sony Aath" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Aath'"><span>Sony Aath</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="18"><img src="http://10.99.99.99/assets/images/STAR JALSHA HD1745033819.png" alt="Star Jalsha HD" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Jalsha'"><span>Star Jalsha HD</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="17"><img src="http://10.99.99.99/assets/images/SUN BANGLA HD1745033791.png" alt="Sun Bangla HD" onerror="this.src='https://via.placeholder.com/80x50?text=Sun+Bangla'"><span>Sun Bangla HD</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="43"><img src="http://10.99.99.99/assets/images/ZEE BANGLA CINEMA1745040996.png" alt="Zee Bangla Cinema" onerror="this.src='https://via.placeholder.com/80x50?text=Zee+Cinema'"><span>Zee Cinema</span></div>
+                <div class="channel-card" data-category="Bangla" data-stream="14"><img src="http://10.99.99.99/assets/images/ZEE BANGLA HD1745033633.png" alt="Zee Bangla HD" onerror="this.src='https://via.placeholder.com/80x50?text=Zee+Bangla'"><span>Zee Bangla HD</span></div>
 
-                <div class="channel-card" data-category="Sports" data-stream="1">
-                    <img src="http://10.99.99.99/assets/images/T SPORTS1744972630.png" alt="T Sports" onerror="this.src='https://via.placeholder.com/80x50?text=T+Sports'">
-                    <span>T Sports</span>
-                </div>
-                <div class="channel-card" data-category="Sports" data-stream="2">
-                    <img src="http://10.99.99.99/assets/images/STAR SPORTS 1 HD1744991778.png" alt="Star Sports 1" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Sports'">
-                    <span>Star Sports 1 HD</span>
-                </div>
-                <div class="channel-card" data-category="Sports" data-stream="3">
-                    <img src="http://10.99.99.99/assets/images/STAR SPORTS 2 HD1744991842.png" alt="Star Sports 2" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Sports'">
-                    <span>Star Sports 2 HD</span>
-                </div>
-                <div class="channel-card" data-category="Sports" data-stream="74">
-                    <img src="http://10.99.99.99/assets/images/sony sports 1 hd.png" alt="Sony Sports 1" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Sports'">
-                    <span>Sony Sports 1</span>
-                </div>
+                <div class="channel-card" data-category="English" data-stream="85"><img src="http://10.99.99.99/assets/images/ALJAZEETA HD1745044358.png" alt="Aljazeera HD" onerror="this.src='https://via.placeholder.com/80x50?text=Aljazeera'"><span>Aljazeera HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="35"><img src="http://10.99.99.99/assets/images/AND FLIX HD1745040018.png" alt="And Flix HD" onerror="this.src='https://via.placeholder.com/80x50?text=And+Flix'"><span>And Flix HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="41"><img src="http://10.99.99.99/assets/images/AND PRIVE HD1745040451.png" alt="And Prive HD" onerror="this.src='https://via.placeholder.com/80x50?text=And+Prive'"><span>And Prive HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="61"><img src="http://10.99.99.99/assets/images/AND XPLORE1745043080.png" alt="And Xplore" onerror="this.src='https://via.placeholder.com/80x50?text=And+Xplore'"><span>And Xplore</span></div>
+                <div class="channel-card" data-category="English" data-stream="26"><img src="http://10.99.99.99/assets/images/ANIMAL PLANET HD1745038671.png" alt="Animal Planet" onerror="this.src='https://via.placeholder.com/80x50?text=Animal+Planet'"><span>Animal Planet</span></div>
+                <div class="channel-card" data-category="English" data-stream="97"><img src="http://10.99.99.99/assets/images/AXN HD1745045171.png" alt="AXN HD" onerror="this.src='https://via.placeholder.com/80x50?text=AXN'"><span>AXN HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="102"><img src="http://10.99.99.99/assets/images/BBC EARTH HD1745150455.png" alt="BBC Earth HD" onerror="this.src='https://via.placeholder.com/80x50?text=BBC+Earth'"><span>BBC Earth HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="22"><img src="http://10.99.99.99/assets/images/discovery hd.png" alt="Discovery HD" onerror="this.src='https://via.placeholder.com/80x50?text=Discovery'"><span>Discovery HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="15"><img src="http://10.99.99.99/assets/images/HISTORY TV HD1745033679.png" alt="History TV HD" onerror="this.src='https://via.placeholder.com/80x50?text=History+TV'"><span>History TV HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="70"><img src="http://10.99.99.99/assets/images/HITZ MUSIC1745043478.png" alt="Hitz Music" onerror="this.src='https://via.placeholder.com/80x50?text=Hitz+Music'"><span>Hitz Music</span></div>
+                <div class="channel-card" data-category="English" data-stream="91"><img src="http://10.99.99.99/assets/images/LOTUS TV1745044960.png" alt="Lotus TV" onerror="this.src='https://via.placeholder.com/80x50?text=Lotus+TV'"><span>Lotus TV</span></div>
+                <div class="channel-card" data-category="English" data-stream="67"><img src="http://10.99.99.99/assets/images/LOVE NATURE1745043370.png" alt="Love Nature" onerror="this.src='https://via.placeholder.com/80x50?text=Love+Nature'"><span>Love Nature</span></div>
+                <div class="channel-card" data-category="English" data-stream="36"><img src="http://10.99.99.99/assets/images/MN PLUS1745040057.png" alt="MN Plus" onerror="this.src='https://via.placeholder.com/80x50?text=MN+Plus'"><span>MN Plus</span></div>
+                <div class="channel-card" data-category="English" data-stream="33"><img src="http://10.99.99.99/assets/images/MNX HD1745039955.png" alt="MNX HD" onerror="this.src='https://via.placeholder.com/80x50?text=MNX+HD'"><span>MNX HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="39"><img src="http://10.99.99.99/assets/images/MOVIES NOW HD1745040368.png" alt="Movies Now HD" onerror="this.src='https://via.placeholder.com/80x50?text=Movies+Now'"><span>Movies Now HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="25"><img src="http://10.99.99.99/assets/images/NATGEO HD1745038634.png" alt="NatGeo HD" onerror="this.src='https://via.placeholder.com/80x50?text=NatGeo'"><span>NatGeo HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="23"><img src="http://10.99.99.99/assets/images/NATGEO WILD HD1745038542.png" alt="NatGeo Wild" onerror="this.src='https://via.placeholder.com/80x50?text=NatGeo+Wild'"><span>NatGeo Wild</span></div>
+                <div class="channel-card" data-category="English" data-stream="34"><img src="http://10.99.99.99/assets/images/ROMEDY NOW1745039988.png" alt="Romedy Now" onerror="this.src='https://via.placeholder.com/80x50?text=Romedy+Now'"><span>Romedy Now</span></div>
+                <div class="channel-card" data-category="English" data-stream="6"><img src="http://10.99.99.99/assets/images/SONY BBC EARTH HD1745031522.png" alt="Sony BBC Earth" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+BBC'"><span>Sony BBC Earth</span></div>
+                <div class="channel-card" data-category="English" data-stream="32"><img src="http://10.99.99.99/assets/images/SONY PIX HD1745039925.png" alt="Sony Pix HD" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Pix'"><span>Sony Pix HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="38"><img src="http://10.99.99.99/assets/images/STAR MOVIES HD1745040174.png" alt="Star Movies HD" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Movies'"><span>Star Movies HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="27"><img src="http://10.99.99.99/assets/images/STAR MOVIES SELECT HD1745038723.png" alt="Star Movies Select" onerror="this.src='https://via.placeholder.com/80x50?text=Movies+Select'"><span>Star Movies Select</span></div>
+                <div class="channel-card" data-category="English" data-stream="9"><img src="http://10.99.99.99/assets/images/TLC HD1745033484.png" alt="TLC HD" onerror="this.src='https://via.placeholder.com/80x50?text=TLC'"><span>TLC HD</span></div>
+                <div class="channel-card" data-category="English" data-stream="62"><img src="http://10.99.99.99/assets/images/TRAVEL XP1745043118.png" alt="Travel XP" onerror="this.src='https://via.placeholder.com/80x50?text=Travel+XP'"><span>Travel XP</span></div>
+                <div class="channel-card" data-category="English" data-stream="37"><img src="http://10.99.99.99/assets/images/ZEE CAFE HD1745040102.png" alt="Zee Cafe HD" onerror="this.src='https://via.placeholder.com/80x50?text=Zee+Cafe'"><span>Zee Cafe HD</span></div>
 
-                <div class="channel-card" data-category="Hindi" data-stream="7">
-                    <img src="http://10.99.99.99/assets/images/ZEE TV HD1745033383.png" alt="Zee TV" onerror="this.src='https://via.placeholder.com/80x50?text=Zee+TV'">
-                    <span>Zee TV HD</span>
-                </div>
-                <div class="channel-card" data-category="Hindi" data-stream="24">
-                    <img src="http://10.99.99.99/assets/images/STAR PLUS HD1745038577.png" alt="Star Plus" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Plus'">
-                    <span>Star Plus HD</span>
-                </div>
-                <div class="channel-card" data-category="Hindi" data-stream="11">
-                    <img src="http://10.99.99.99/assets/images/SONY ENT HD1745033553.png" alt="Sony Ent HD" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Ent'">
-                    <span>Sony Ent HD</span>
-                </div>
-                <div class="channel-card" data-category="Hindi" data-stream="13">
-                    <img src="http://10.99.99.99/assets/images/ZEE CINEMA HD1745033602.png" alt="Zee Cinema HD" onerror="this.src='https://via.placeholder.com/80x50?text=Zee+Cinema'">
-                    <span>Zee Cinema HD</span>
-                </div>
+                <div class="channel-card" data-category="Hindi" data-stream="5"><img src="http://10.99.99.99/assets/images/AND PICTURS HD1745031440.png" alt="And Pictures HD" onerror="this.src='https://via.placeholder.com/80x50?text=And+Pictures'"><span>And Pictures HD</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="10"><img src="http://10.99.99.99/assets/images/COLORS CINEPLEX HD1745033519.png" alt="Colors Cineplex" onerror="this.src='https://via.placeholder.com/80x50?text=Cineplex'"><span>Colors Cineplex</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="4"><img src="http://10.99.99.99/assets/images/COLORS HD1745031404.png" alt="Colors HD" onerror="this.src='https://via.placeholder.com/80x50?text=Colors+HD'"><span>Colors HD</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="90"><img src="http://10.99.99.99/assets/images/GEO NEWS HD1745044892.png" alt="Geo News HD" onerror="this.src='https://via.placeholder.com/80x50?text=Geo+News'"><span>Geo News HD</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="89"><img src="http://10.99.99.99/assets/images/HUM TV1745044837.png" alt="Hum TV" onerror="this.src='https://via.placeholder.com/80x50?text=Hum+TV'"><span>Hum TV</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="11"><img src="http://10.99.99.99/assets/images/SONY ENT HD1745033553.png" alt="Sony Ent HD" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Ent'"><span>Sony Ent HD</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="21"><img src="http://10.99.99.99/assets/images/SONY MAX HD1745034069.png" alt="Sony Max HD" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Max'"><span>Sony Max HD</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="100"><img src="http://10.99.99.99/assets/images/STAR BHARAT HD1745045255.png" alt="Star Bharat HD" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Bharat'"><span>Star Bharat HD</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="69"><img src="http://10.99.99.99/assets/images/STAR GOLD 2 HD1745043441.png" alt="Star Gold 2 HD" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Gold+2'"><span>Star Gold 2 HD</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="20"><img src="http://10.99.99.99/assets/images/STAR GOLD HD1745034037.png" alt="Star Gold HD" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Gold'"><span>Star Gold HD</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="71"><img src="http://10.99.99.99/assets/images/STAR GOLD SELECT HD1745043508.png" alt="Star Gold Select" onerror="this.src='https://via.placeholder.com/80x50?text=Gold+Select'"><span>Star Gold Select</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="24"><img src="http://10.99.99.99/assets/images/STAR PLUS HD1745038577.png" alt="Star Plus HD" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Plus'"><span>Star Plus HD</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="13"><img src="http://10.99.99.99/assets/images/ZEE CINEMA HD1745033602.png" alt="Zee Cinema HD" onerror="this.src='https://via.placeholder.com/80x50?text=Zee+Cinema'"><span>Zee Cinema HD</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="7"><img src="http://10.99.99.99/assets/images/ZEE TV HD1745033383.png" alt="Zee TV HD" onerror="this.src='https://via.placeholder.com/80x50?text=Zee+TV'"><span>Zee TV HD</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="53"><img src="http://10.99.99.99/assets/images/ZING1745042718.png" alt="Zing" onerror="this.src='https://via.placeholder.com/80x50?text=Zing'"><span>Zing</span></div>
+                <div class="channel-card" data-category="Hindi" data-stream="42"><img src="http://10.99.99.99/assets/images/ZOOM1745040961.png" alt="Zoom" onerror="this.src='https://via.placeholder.com/80x50?text=Zoom'"><span>Zoom</span></div>
 
-                <div class="channel-card" data-category="English" data-stream="38">
-                    <img src="http://10.99.99.99/assets/images/STAR MOVIES HD1745040174.png" alt="Star Movies HD" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Movies'">
-                    <span>Star Movies HD</span>
-                </div>
-                <div class="channel-card" data-category="English" data-stream="22">
-                    <img src="http://10.99.99.99/assets/images/discovery hd.png" alt="Discovery HD" onerror="this.src='https://via.placeholder.com/80x50?text=Discovery'">
-                    <span>Discovery HD</span>
-                </div>
-                <div class="channel-card" data-category="English" data-stream="25">
-                    <img src="http://10.99.99.99/assets/images/NATGEO HD1745038634.png" alt="NatGeo HD" onerror="this.src='https://via.placeholder.com/80x50?text=NatGeo'">
-                    <span>NatGeo HD</span>
-                </div>
+                <div class="channel-card" data-category="Sports" data-stream="88"><img src="http://10.99.99.99/assets/images/A SPORTS HD1745044782.png" alt="A Sports HD" onerror="this.src='https://via.placeholder.com/80x50?text=A+Sports'"><span>A Sports HD</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="40"><img src="http://10.99.99.99/assets/images/EUROSPORTS HD1745040406.png" alt="EuroSports HD" onerror="this.src='https://via.placeholder.com/80x50?text=Eurosports'"><span>EuroSports HD</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="87"><img src="http://10.99.99.99/assets/images/FAST SPORTS HD1745044750.png" alt="Fast Sports HD" onerror="this.src='https://via.placeholder.com/80x50?text=Fast+Sports'"><span>Fast Sports HD</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="66"><img src="http://10.99.99.99/assets/images/GOLF SPORTS1745043338.png" alt="Golf Sports" onerror="this.src='https://via.placeholder.com/80x50?text=Golf+Sports'"><span>Golf Sports</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="92"><img src="http://10.99.99.99/assets/images/PTV SPORTS HD1745044993.png" alt="PTV Sports HD" onerror="this.src='https://via.placeholder.com/80x50?text=PTV+Sports'"><span>PTV Sports HD</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="74"><img src="http://10.99.99.99/assets/images/sony sports 1 hd.png" alt="Sony Sports 1" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Sports+1'"><span>Sony Sports 1</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="29"><img src="http://10.99.99.99/assets/images/sony sports 2 hd.png" alt="Sony Sports 2" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Sports+2'"><span>Sony Sports 2</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="30"><img src="http://10.99.99.99/assets/images/Sony sports 3.png" alt="Sony Sports 3" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Sports+3'"><span>Sony Sports 3</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="72"><img src="http://10.99.99.99/assets/images/sony sports 4.png" alt="Sony Sports 4" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Sports+4'"><span>Sony Sports 4</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="101"><img src="http://10.99.99.99/assets/images/sony sports 5 hd.png" alt="Sony Sports 5 HD" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Sports+5'"><span>Sony Sports 5 HD</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="96"><img src="http://10.99.99.99/assets/images/ssc 1 hd.png" alt="SSC Sports" onerror="this.src='https://via.placeholder.com/80x50?text=SSC+Sports'"><span>SSC Sports</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="103"><img src="http://10.99.99.99/assets/images/ssc 5 hd.png" alt="SSC Sports 5" onerror="this.src='https://via.placeholder.com/80x50?text=SSC+Sports+5'"><span>SSC Sports 5 HD</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="28"><img src="http://10.99.99.99/assets/images/STAR SELECT 1 HD1745038777.png" alt="Star Select 1" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Select+1'"><span>Star Select 1 HD</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="2"><img src="http://10.99.99.99/assets/images/STAR SPORTS 1 HD1744991778.png" alt="Star Sports 1 HD" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Sports+1'"><span>Star Sports 1 HD</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="3"><img src="http://10.99.99.99/assets/images/STAR SPORTS 2 HD1744991842.png" alt="Star Sports 2 HD" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Sports+2'"><span>Star Sports 2 HD</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="31"><img src="http://10.99.99.99/assets/images/STAR SPORTS 31745039893.png" alt="Star Sports 3" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Sports+3'"><span>Star Sports 3</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="16"><img src="http://10.99.99.99/assets/images/STAR SPORTS SELECT 2 HD1745033722.png" alt="Star Sports Select 2" onerror="this.src='https://via.placeholder.com/80x50?text=Star+Select+2'"><span>Star Select 2 HD</span></div>
+                <div class="channel-card" data-category="Sports" data-stream="1"><img src="http://10.99.99.99/assets/images/T SPORTS1744972630.png" alt="T Sports" onerror="this.src='https://via.placeholder.com/80x50?text=T+Sports'"><span>T Sports</span></div>
 
-                <div class="channel-card" data-category="Kids" data-stream="8">
-                    <img src="http://10.99.99.99/assets/images/CARTOON NETWORK1745033414.png" alt="Cartoon Network" onerror="this.src='https://via.placeholder.com/80x50?text=Cartoon'">
-                    <span>Cartoon Net</span>
-                </div>
-                <div class="channel-card" data-category="Kids" data-stream="46">
-                    <img src="http://10.99.99.99/assets/images/NICK1745041451.png" alt="Nick" onerror="this.src='https://via.placeholder.com/80x50?text=Nick'">
-                    <span>Nick</span>
-                </div>
-                <div class="channel-card" data-category="Kids" data-stream="68">
-                    <img src="http://10.99.99.99/assets/images/DURANTA TV1745043400.png" alt="Duranta TV" onerror="this.src='https://via.placeholder.com/80x50?text=Duranta+TV'">
-                    <span>Duranta TV</span>
-                </div>
+                <div class="channel-card" data-category="Kids" data-stream="50"><img src="http://10.99.99.99/assets/images/BAL BHARAT1745041576.png" alt="Bal Bharat" onerror="this.src='https://via.placeholder.com/80x50?text=Bal+Bharat'"><span>Bal Bharat</span></div>
+                <div class="channel-card" data-category="Kids" data-stream="8"><img src="http://10.99.99.99/assets/images/CARTOON NETWORK1745033414.png" alt="Cartoon Network" onerror="this.src='https://via.placeholder.com/80x50?text=Cartoon'"><span>Cartoon Network</span></div>
+                <div class="channel-card" data-category="Kids" data-stream="68"><img src="http://10.99.99.99/assets/images/DURANTA TV1745043400.png" alt="Duranta TV" onerror="this.src='https://via.placeholder.com/80x50?text=Duranta+TV'"><span>Duranta TV</span></div>
+                <div class="channel-card" data-category="Kids" data-stream="49"><img src="http://10.99.99.99/assets/images/HUNGAMA1745041551.png" alt="Hungama" onerror="this.src='https://via.placeholder.com/80x50?text=Hungama'"><span>Hungama</span></div>
+                <div class="channel-card" data-category="Kids" data-stream="46"><img src="http://10.99.99.99/assets/images/NICK1745041451.png" alt="Nick" onerror="this.src='https://via.placeholder.com/80x50?text=Nick'"><span>Nick</span></div>
+                <div class="channel-card" data-category="Kids" data-stream="51"><img src="http://10.99.99.99/assets/images/NICK JR1745042397.png" alt="Nick Jr" onerror="this.src='https://via.placeholder.com/80x50?text=Nick+Jr'"><span>Nick Jr</span></div>
+                <div class="channel-card" data-category="Kids" data-stream="48"><img src="http://10.99.99.99/assets/images/POGO1745041515.png" alt="Pogo" onerror="this.src='https://via.placeholder.com/80x50?text=Pogo'"><span>Pogo</span></div>
+                <div class="channel-card" data-category="Kids" data-stream="45"><img src="http://10.99.99.99/assets/images/SONIC1745041154.png" alt="Sonic" onerror="this.src='https://via.placeholder.com/80x50?text=Sonic'"><span>Sonic</span></div>
+                <div class="channel-card" data-category="Kids" data-stream="93"><img src="http://10.99.99.99/assets/images/SONY YAY1745045046.png" alt="Sony Yay" onerror="this.src='https://via.placeholder.com/80x50?text=Sony+Yay'"><span>Sony Yay</span></div>
+                <div class="channel-card" data-category="Kids" data-stream="75"><img src="http://10.99.99.99/assets/images/SUPER HUNGAMA1745044022.png" alt="Super Hungama" onerror="this.src='https://via.placeholder.com/80x50?text=Super+Hungama'"><span>Super Hungama</span></div>
 
-                <div class="channel-card" data-category="Islamic" data-stream="86">
-                    <img src="http://10.99.99.99/assets/images/PEACE TV BANGLA1745044480.png" alt="Peace TV Bangla" onerror="this.src='https://via.placeholder.com/80x50?text=Peace+TV'">
-                    <span>Peace TV</span>
-                </div>
-                <div class="channel-card" data-category="Islamic" data-stream="83">
-                    <img src="http://10.99.99.99/assets/images/MADANI TV HD1745044303.png" alt="Madani TV" onerror="this.src='https://via.placeholder.com/80x50?text=Madani+TV'">
-                    <span>Madani TV HD</span>
-                </div>
+                <div class="channel-card" data-category="Islamic" data-stream="83"><img src="http://10.99.99.99/assets/images/MADANI TV HD1745044303.png" alt="Madani TV HD" onerror="this.src='https://via.placeholder.com/80x50?text=Madani+TV'"><span>Madani TV HD</span></div>
+                <div class="channel-card" data-category="Islamic" data-stream="86"><img src="http://10.99.99.99/assets/images/PEACE TV BANGLA1745044480.png" alt="Peace TV Bangla" onerror="this.src='https://via.placeholder.com/80x50?text=Peace+TV'"><span>Peace TV Bangla</span></div>
 
             </div>
         </aside>
     </div>
+
+    <footer>
+        &copy; 2026 Designed & Developed by <span>Sobuj Mia</span>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const tabs = document.querySelectorAll('.tab-btn');
             const channels = document.querySelectorAll('.channel-card');
             const player = document.getElementById('tv-player');
+            const searchInput = document.getElementById('searchInput');
 
-            // Category Filter
+            // ফিল্টার এবং সার্চ করার মেইন ফাংশন
+            function filterChannels() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const activeTab = document.querySelector('.tab-btn.active').getAttribute('data-filter');
+
+                channels.forEach(channel => {
+                    const channelName = channel.querySelector('span').innerText.toLowerCase();
+                    const category = channel.getAttribute('data-category');
+
+                    // সার্চ এবং ক্যাটাগরি দুইটার শর্তই মিলতে হবে
+                    const matchesSearch = channelName.includes(searchTerm);
+                    const matchesCategory = activeTab === 'All' || category === activeTab;
+
+                    if (matchesSearch && matchesCategory) {
+                        channel.style.display = 'flex';
+                    } else {
+                        channel.style.display = 'none';
+                    }
+                });
+            }
+
+            // Category Tabs Click Event
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     tabs.forEach(t => t.classList.remove('active'));
                     tab.classList.add('active');
-
-                    const filterValue = tab.getAttribute('data-filter');
-
-                    channels.forEach(channel => {
-                        if (filterValue === 'All' || channel.getAttribute('data-category') === filterValue) {
-                            channel.style.display = 'flex';
-                        } else {
-                            channel.style.display = 'none';
-                        }
-                    });
+                    filterChannels(); // ক্যাটাগরি বদলালে ফিল্টার আপডেট হবে
                 });
             });
+
+            // Search Bar Type Event
+            searchInput.addEventListener('input', filterChannels);
 
             // Play Video on Click
             channels.forEach(channel => {
